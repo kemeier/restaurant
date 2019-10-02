@@ -78,6 +78,32 @@
         </div>
     </div>
 
+    <script type="text/javascript">
+        // $("#search-btn").on("click", function() {
+        //   var allReservations = $("#character-search").val().trim();
+    
+          // Using a RegEx Pattern to remove spaces from searchedCharacter
+          // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+          newReservation = newReservation.replace(/\s+/g, "").toLowerCase();
+    
+          $.get("/api/tables/" + newReservation, function(data) {
+            console.log(data);
+            if (data) {
+              $("#stats").show();
+              $("#userName").text(data.userName);
+              $("#userPhone").text(data.userPhone);
+              $("#userEmai").text(data.userEmai);
+              $("#guestID").text(data.guestID);
+            } else {
+              $("#name").text(
+                "The force is not strong with this one. Your character was not found.");
+              $("#stats").hide();
+            }
+          });
+       
+    
+      </script>
+
 </body>
 
 </html>
